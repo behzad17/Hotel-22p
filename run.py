@@ -10,10 +10,10 @@ SCOPE = [
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('hotelmanagement')
+SHEET = GSPREAD_CLIENT.open('hotel-management')
 
-rooms = SHEET.worksheet('rooms')
+HotelManagement = SHEET.worksheet('hotel-management')
 
-data = rooms.get_all_values()
+data = HotelManagement.get_all_values()
 
 print(data)
