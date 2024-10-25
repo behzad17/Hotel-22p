@@ -12,8 +12,8 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hotel-management')
 
-HotelManagement = SHEET.worksheet('hotel-management')
+rooms = SHEET.worksheet('rooms')
 
-data = HotelManagement.get_all_values()
+data = rooms.get_all_values()
 
 print(data)
