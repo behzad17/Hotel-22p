@@ -28,4 +28,13 @@ class HotelManagement:
             hotel = HotelManagement()
             hotel.display_rooms() 
 
-    
+    #function to available rooms
+    def display_available_rooms(self):
+        available_rooms = [room for room in self.rooms if room not in self reservations]
+        if available_rooms:
+            print("Available rooms:")
+            for room in available_rooms:
+                print(room)
+        else:
+            print("No rooms available")        
+        
