@@ -55,4 +55,11 @@ class HotelManagement:
         else:
             print(f"Room {room} is not available")
 
-        
+
+    def check_out_guest(self, room):
+        if room in self.reservations:
+            del self.reservations[room]    
+            print(f"Guest ckecked out from {room}")
+        else:
+            print(f"Room {room} is not currently reserved")
+                
