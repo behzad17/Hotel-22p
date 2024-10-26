@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+import datetime
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -43,10 +44,14 @@ class HotelManagement:
 
 
     #make_reservation
-    def make_reservation(self, name, room):
+    def make_reservation(self, name, room, check_in, check_out):
         if room in self.room and room not in self.reservation:
-            self.reservation[room] = name
-            print(f"Room {room} reserved for {name}")
+            self.reservation[room] = {
+                "name": name,
+                "check_in": check_in,
+                "check_out": check_out
+            }
+            print(f"Room {room} reserved for {name} from {check_in} to {check_out}")
         else:
             print(f"Room {room} is not available")
 
