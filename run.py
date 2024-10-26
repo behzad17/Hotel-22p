@@ -36,5 +36,15 @@ class HotelManagement:
             for room in available_rooms:
                 print(room)
         else:
-            print("No rooms available")        
+            print("No rooms available")   
+
+
+    #make_reservation
+    def make_reservation(self, name, room):
+        if room in self.room and room not in self.reservation:
+            self.reservation[room] = name
+            print(f"Room {room} reserved for {name}")
+        else:
+            print(f"Room {room} is not available")
+                           
         
