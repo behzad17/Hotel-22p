@@ -26,7 +26,10 @@ class HotelManagement:
 
         if __name__ == "__main__":
             hotel = HotelManagement()
-            hotel.display_rooms() 
+            hotel.display_available_rooms() 
+            hotel.make_reservation("Behzad Javadian", "Room 101")
+            hotel.display_available_rooms() 
+
 
     #function to available rooms
     def display_available_rooms(self):
@@ -46,5 +49,5 @@ class HotelManagement:
             print(f"Room {room} reserved for {name}")
         else:
             print(f"Room {room} is not available")
-                           
+
         
