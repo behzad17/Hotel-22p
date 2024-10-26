@@ -27,8 +27,11 @@ class HotelManagement:
 
         if __name__ == "__main__":
             hotel = HotelManagement()
+            check_in = datetime.date(2024, 10, 26)
+            check_out = datetime.date(2024, 10, 30)
             hotel.display_available_rooms() 
-            hotel.make_reservation("Behzad Javadian", "Room 101")
+            hotel.make_reservation("Behzad Javadian", "Room 101", check_in, check_out)
+            hotel.check_out_guest("Room !01")
             hotel.display_available_rooms() 
 
 
@@ -62,4 +65,3 @@ class HotelManagement:
             print(f"Guest ckecked out from {room}")
         else:
             print(f"Room {room} is not currently reserved")
-                
