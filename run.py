@@ -14,15 +14,18 @@ SHEET = GSPREAD_CLIENT.open('hotel-management')
 
 #class and rooms list to hotel management
 class HotelManagement:
-def __init__(self):
-    self.rooms = [f"Room{i}" for i in range(1, 21)] #hotel have 20 Rooms
 
-def display_rooms(self):
-    print("Available rooms in the hotel:")
-    for room in self.room:
-        print(room)
+    def __init__(self):
+        self.rooms = [f"Room{i}" for i in range(1, 21)] #hotel have 20 Rooms
+        self.reservations = {} #self reservation
+      
+    def display_rooms(self):
+        print("Available rooms in the hotel:")
+        for room in self.room:
+            print(room)
 
-    if __name__ == "__main__":
-        hotel = HotelManagement()
-        hotel.display_rooms() 
-        
+        if __name__ == "__main__":
+            hotel = HotelManagement()
+            hotel.display_rooms() 
+
+    
