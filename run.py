@@ -12,8 +12,8 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hotel-management')
 
-rooms = SHEET.worksheet('rooms')
-
-data = rooms.get_all_values()
-
-print(data)
+#class and rooms list to hotel management
+class HotelManagement:
+    def __init__(self):
+        self.rooms = [f"Room{i}" for i in range(1, 21)] #hotel have 20 Rooms
+        
