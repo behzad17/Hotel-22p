@@ -76,9 +76,9 @@ class HotelManagement:
         print("Sales worksheet updated successfully.\n")
 
 
-data = get_sales_data()
-sales_data = [int(num) for num in data]
-update_sales_worksheet(sales_data)
+    data = get_rooms_data()
+    rooms_data = [int(num) for num in data]
+    update_rooms_worksheet(sales_data)
 
 
 rooms = SHEET.worksheet("rooms")    
