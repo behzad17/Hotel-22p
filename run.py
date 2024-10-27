@@ -19,15 +19,21 @@ class HotelManagement:
     def __init__(self):
         self.rooms = [f"Room {i}" for i in range(1, 21)] #hotel have 20 Rooms
         self.reservations = {} #self reservation
-      
+        self.get_reservations_from_sheet()
     
 
 
-    def get_reservation_from_sheet(self):
-        worksheet = SHEET.workshet("rooms")  
-        records = worksheet.get_all_values()  
-        self.reservations =  {record["Room"]: {"name": record["Name"], "check_in": record["Check-in "], "check_out": record["Check-out"]}   
-                             for record in records if record["Name"]}
+    def get_reservations_from_sheet(self):
+        worksheet = SHEET.worksheet("rooms")  
+        records = worksheet.get_all_records()  
+        self.reservations = {
+            record["Room"].replace(" ", ""): {
+            "name": record["Name"].strip(),
+            "check_in": record["Check-in "].strip(), 
+            "check_out": record["Check-out"].strip()
+            }   
+            for record in records if record["Name"]
+            }
 
     
     def display_rooms(self):
@@ -89,7 +95,7 @@ if __name__ == "__main__":
     check_in = datetime.date(2024, 10, 26)
     check_out = datetime.date(2024, 10, 30)
     hotel.display_available_rooms() 
-    hotel.make_reservation("Behzadian Javadian", "Room 1", check_in, check_out)
+    hotel.make_reservation("Behzad Javadian", "Room1", check_in, check_out)
     hotel.display_available_rooms()
-    hotel.check_out_guest("Room 1")
+    hotel.check_out_guest("Room1")
     hotel.display_available_rooms() 
