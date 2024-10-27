@@ -26,6 +26,12 @@ class HotelManagement:
             print(room)
 
 
+    def get_reservation_from_sheet(self):
+        worksheet = SHEET.workshet("rooms")  
+        records = worksheet.get_all_values()  
+        self.reservations =  {record["Room"]: {"name": record["Name"], "check_in": record["Check-in "], "check_out": record["Check-out"]}   
+                             for record in records if record["Name"]}
+
 
     #function to available rooms
     def display_available_rooms(self):
