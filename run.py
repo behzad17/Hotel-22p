@@ -20,10 +20,7 @@ class HotelManagement:
         self.rooms = [f"Room {i}" for i in range(1, 21)] #hotel have 20 Rooms
         self.reservations = {} #self reservation
       
-    def display_rooms(self):
-        print("Available rooms in the hotel:")
-        for room in self.rooms:
-            print(room)
+    
 
 
     def get_reservation_from_sheet(self):
@@ -31,6 +28,13 @@ class HotelManagement:
         records = worksheet.get_all_values()  
         self.reservations =  {record["Room"]: {"name": record["Name"], "check_in": record["Check-in "], "check_out": record["Check-out"]}   
                              for record in records if record["Name"]}
+
+    
+    def display_rooms(self):
+        print("Available rooms in the hotel:")
+        for room in self.rooms:
+            print(room)
+
 
 
     #function to available rooms
@@ -47,14 +51,13 @@ class HotelManagement:
     #make_reservation
     def make_reservation(self, name, room, check_in, check_out):
         if room in self.rooms and room not in self.reservations:
-            self.reservations[room] = {
-                "name": name,
-                "check_in": check_in,
-                "check_out": check_out
-            }
+            self.reservations[room] = {"name": name, "check_in": check_in, "check_out": check_out}
+            worksheet = SHEET.worksheet("rooms")
+            worksheet.append_row([name, room, str(check_in), str(check_out)])
             print(f"Room {room} reserved for {name} from {check_in} to {check_out}")
         else:
             print(f"Room {room} is not available")
+        self.get_reservations_from_sheet()
 
 
     def check_out_guest(self, room):
