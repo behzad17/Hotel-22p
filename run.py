@@ -17,7 +17,7 @@ SHEET = GSPREAD_CLIENT.open('hotel-management')
 class HotelManagement:
 
     def __init__(self):
-        self.rooms = [f"Room{i}" for i in range(1, 21)] #hotel have 20 Rooms
+        self.rooms = [f"Room {i}" for i in range(1, 21)] #hotel have 20 Rooms
         self.reservations = {} #self reservation
       
     def display_rooms(self):
@@ -25,14 +25,6 @@ class HotelManagement:
         for room in self.rooms:
             print(room)
 
-        if __name__ == "__main__":
-            hotel = HotelManagement()
-            check_in = datetime.date(2024, 10, 26)
-            check_out = datetime.date(2024, 10, 30)
-            hotel.display_available_rooms() 
-            hotel.make_reservation("Behzadian Javadian", "Room 101", check_in, check_out)
-            hotel.check_out_guest("Room 101")
-            hotel.display_available_rooms() 
 
 
     #function to available rooms
@@ -48,8 +40,8 @@ class HotelManagement:
 
     #make_reservation
     def make_reservation(self, name, room, check_in, check_out):
-        if room in self.room and room not in self.reservations:
-            self.reservation[room] = {
+        if room in self.rooms and room not in self.reservations:
+            self.reservations[room] = {
                 "name": name,
                 "check_in": check_in,
                 "check_out": check_out
@@ -66,21 +58,29 @@ class HotelManagement:
         else:
             print(f"Room {room} is not currently reserved")
 
-    def update_rooms_worksheet(data):
+    def update_rooms_worksheet(self, data):
         """
-        Update sales worksheet, add new row with the list data provided
+        Update rooms worksheet, add new row with the list data provided
         """
-        print("Updating sales worksheet...\n")
-        sales_worksheet = SHEET.worksheet("sales")
-        sales_worksheet.append_row(data)
-        print("Sales worksheet updated successfully.\n")
+        print("Updating rooms worksheet...\n")
+        rooms_worksheet = SHEET.worksheet("rooms")
+        rooms_worksheet.append_row(data)
+        print("Rooms worksheet updated successfully.\n")
 
-
-    data = get_rooms_data()
-    rooms_data = [int(num) for num in data]
-    update_rooms_worksheet(sales_data)
 
 
 rooms = SHEET.worksheet("rooms")    
 data = rooms.get_all_values()
 print(data)
+
+
+if __name__ == "__main__":
+            
+    hotel = HotelManagement()
+    check_in = datetime.date(2024, 10, 26)
+    check_out = datetime.date(2024, 10, 30)
+    hotel.display_available_rooms() 
+    hotel.make_reservation("Behzadian Javadian", "Room 1", check_in, check_out)
+    hotel.display_available_rooms()
+    hotel.check_out_guest("Room 1")
+    hotel.display_available_rooms() 
