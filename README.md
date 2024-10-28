@@ -1,13 +1,13 @@
-# Hotel-22p
-# Hotel Management System
 
-This is a simple hotel management system build to manage reservations and room availability for a small hotel. The system interacts with Google Sheets to store and manage reservation data.
+# Hotel Management 
+
+This is a simple hotel management system build to manage reservations and room availability for a small hotel. The system interacts with Google Sheets to store and manage reserve data.
 
 ## Features
 
 - Add new reservations for hotel rooms
 - Check available rooms for specific dates
-- Check out guests and free up rooms
+- Check out guests to show free up rooms
 - Store and manage reservation data in Google Sheets
 
 ## Installation
@@ -15,10 +15,10 @@ This is a simple hotel management system build to manage reservations and room a
 1. Clone this repository:
     git clone https://github.com/behzad17/Hotel-22p
 
-2. Install dependencies:
+2. Installs:
     pip install -r requirements.txt  
 
-3. Set up Google Sheets API credentials by downloading the `credentials.json` file and placing it in the project directory.
+3. Fix Google Sheets API credentials by downloading the `credentials.json` file and placing it in the project directory.
 
 4. Run the app:
     python app.py
